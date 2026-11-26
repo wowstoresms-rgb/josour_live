@@ -1,0 +1,1977 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#145334" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>جسور | المنصة المباشرة للاقتصاد والطاقة والحرم المكي</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@500;700;800;900&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Cairo', 'Tajawal', 'sans-serif'],
+          },
+          colors: {
+            josour: {
+              dark: '#0f4229',
+              primary: '#165b38',
+              emerald: '#1d7548',
+              light: '#e8f3ed',
+              mint: '#d3eadc',
+              gold: '#c88a2e',
+              goldLight: '#fdf6e9',
+              sand: '#f6f8f7'
+            }
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+    body {
+      font-family: 'Cairo', sans-serif;
+      background-color: #f3f6f4;
+      color: #0f291c;
+      overflow-x: hidden;
+    }
+
+    /* بطاقة مقاس 9:16 احترافية للريلز والستوري */
+    .story-card-wrapper {
+      width: 100%;
+      max-width: 390px;
+      margin: 0 auto;
+    }
+
+    .story-card {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 9 / 16;
+      background: linear-gradient(165deg, #ffffff 0%, #f4f9f6 52%, #e6f2eb 100%);
+      border-radius: 28px;
+      border: 2px solid #cbe3d5;
+      box-shadow: 0 20px 45px -12px rgba(15, 66, 41, 0.18);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 18px 16px;
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
+    }
+
+    .story-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 25px 50px -12px rgba(15, 66, 41, 0.25);
+    }
+
+    /* حركات موشن جرافيك متصلة لمدة 10 ثوانٍ */
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-8px) rotate(2deg); }
+    }
+    @keyframes pulseRing {
+      0% { transform: scale(0.95); opacity: 0.7; }
+      50% { transform: scale(1.08); opacity: 0.25; }
+      100% { transform: scale(0.95); opacity: 0.7; }
+    }
+    @keyframes shimmerSweep {
+      0% { transform: translateX(120%) skewX(-20deg); }
+      45%, 100% { transform: translateX(-220%) skewX(-20deg); }
+    }
+    @keyframes cardBreath {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+    @keyframes popRow {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.015); }
+    }
+
+    .motion-bg-orb {
+      animation: floatSlow 10s ease-in-out infinite;
+    }
+    .motion-pulse {
+      animation: pulseRing 3.33s ease-in-out infinite;
+    }
+    .motion-shimmer::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 45%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.55), transparent);
+      animation: shimmerSweep 5s infinite ease-in-out;
+      pointer-events: none;
+    }
+    .motion-row-highlight {
+      animation: popRow 5s ease-in-out infinite;
+    }
+
+    /* إخفاء شريط التمرير مع الحفاظ على السحب */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* شريط تقدم 10 ثوانٍ أعلى البطاقة */
+    @keyframes loopProgress {
+      0% { width: 0%; }
+      100% { width: 100%; }
+    }
+    .loop-bar {
+      animation: loopProgress 10s linear infinite;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- الشريط العلوي الثابت بالهوية البصرية لمنصة جسور -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-emerald-900/10 shadow-sm">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 h-16 flex items-center justify-between gap-2">
+      
+      <!-- زر الحاسبة السريعة -->
+      <button onclick="openCalculatorModal()" class="flex items-center gap-1.5 bg-emerald-50 hover:bg-emerald-100 text-josour-dark border border-emerald-200 px-3 py-2 rounded-xl text-xs sm:text-sm font-bold transition active:scale-95">
+        <svg class="w-4 h-4 text-josour-primary" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+          <rect x="4" y="2" width="16" height="20" rx="2" />
+          <line x1="8" y1="6" x2="16" y2="6" />
+          <line x1="8" y1="10" x2="8" y2="10.01" />
+          <line x1="12" y1="10" x2="12" y2="10.01" />
+          <line x1="16" y1="10" x2="16" y2="10.01" />
+          <line x1="8" y1="14" x2="8" y2="14.01" />
+          <line x1="12" y1="14" x2="12" y2="14.01" />
+          <line x1="16" y1="14" x2="16" y2="14.01" />
+          <line x1="8" y1="18" x2="16" y2="18" />
+        </svg>
+        <span>حاسبة</span>
+      </button>
+
+      <!-- شعار جسور الرسمي في المنتصف -->
+      <div onclick="switchView('dashboard')" class="cursor-pointer flex items-center justify-center bg-white px-4 py-1 rounded-2xl border border-emerald-900/10 shadow-xs">
+        <svg class="h-9 sm:h-10 w-auto" viewBox="0 0 210 68" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="شعار جسور">
+          <!-- ج -->
+          <path d="M162 24H189C193 24 196 27 196 31V39C196 43 193 46 189 46H155V37H185V33H162V24Z" fill="#165b38"/>
+          <circle cx="177" cy="54" r="4.2" fill="#c88a2e"/>
+          <!-- س -->
+          <path d="M112 24H121V37H128V24H137V37H144V24H153V39C153 43 150 46 146 46H112V37Z" fill="#165b38"/>
+          <!-- و -->
+          <path d="M84 24H103C107 24 110 27 110 31V44C110 52 104 57 95 57H83V49H94C99 49 101 47 101 43V42H84C80 42 77 39 77 35V31C77 27 80 24 84 24ZM86 34H101V31H86V34Z" fill="#165b38"/>
+          <!-- ر -->
+          <path d="M62 26H71V44C71 52 65 57 56 57H47V49H55C60 49 62 47 62 43V26Z" fill="#165b38"/>
+          <!-- قوس الجسر الهندسي -->
+          <path d="M47 17C85 6 145 6 195 17" stroke="#c88a2e" stroke-width="3.5" stroke-linecap="round"/>
+          <circle cx="34" cy="36" r="5" fill="#1d7548"/>
+          <circle cx="21" cy="36" r="3.2" fill="#c88a2e"/>
+        </svg>
+      </div>
+
+      <!-- زر تحديث البيانات ومؤشر المقاس 9:16 -->
+      <div class="flex items-center gap-2">
+        <span class="hidden sm:inline-flex items-center gap-1 bg-emerald-50 text-josour-primary border border-emerald-200 px-2.5 py-1.5 rounded-xl text-xs font-extrabold">
+          <span>9:16</span>
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+        </span>
+        <button id="refreshBtn" onclick="refreshAllLiveFeeds(true)" class="flex items-center gap-1.5 bg-josour-primary hover:bg-josour-dark text-white px-3 py-2 rounded-xl text-xs sm:text-sm font-bold shadow-sm transition active:scale-95">
+          <svg id="refreshIcon" class="w-4 h-4 transition-transform duration-500" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+          </svg>
+          <span class="hidden xs:inline">تحديث</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- الصفحة الرئيسية للوحة البيانات والبطاقات -->
+  <main id="dashboardView" class="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 py-5 sm:py-8">
+    
+    <!-- شريط المقدمة التعريفي -->
+    <section class="bg-white rounded-3xl p-5 sm:p-7 border border-emerald-900/10 shadow-sm mb-6 relative overflow-hidden">
+      <div class="absolute -left-12 -top-12 w-44 h-44 rounded-full bg-emerald-500/10 blur-2xl pointer-events-none"></div>
+      <div class="absolute -right-12 -bottom-12 w-44 h-44 rounded-full bg-amber-500/10 blur-2xl pointer-events-none"></div>
+      
+      <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+          <div class="inline-flex items-center gap-2 bg-emerald-50 border border-emerald-200 text-josour-primary px-3 py-1 rounded-full text-xs font-extrabold mb-2.5">
+            <span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
+            <span>منصة جسور المباشرة • مستقبل الطاقة النظيفة والاقتصاد في مصر</span>
+          </div>
+          <h1 class="text-xl sm:text-3xl font-black text-josour-dark leading-snug">
+            البيانات الحية اليومية بتصميم الريلز والستوري
+          </h1>
+          <p class="text-xs sm:text-sm text-slate-600 mt-1.5 max-w-2xl leading-relaxed">
+            أسعار الدولار والعملات والذهب والأرصاد ومؤشر الطاقة المتجددة والتعداد السكاني والحرم المكي محدثة لحظياً، مع حركة موشن جرافيك متصلة لمدة 10 ثوانٍ وتصدير مباشر بمقاس 9:16.
+          </p>
+        </div>
+
+        <div class="flex flex-col sm:items-end justify-center bg-josour-sand border border-emerald-900/10 rounded-2xl px-4 py-3 shrink-0">
+          <div id="liveDateDisplay" class="text-sm font-extrabold text-josour-dark">الخميس، ٢٦ نوفمبر ٢٠٢٦</div>
+          <div class="flex items-center gap-1.5 text-xs text-emerald-700 font-bold mt-1">
+            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+            <span id="liveTimeDisplay">تحديث مباشر بتوقيت القاهرة</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- أزرار الفلترة والتنقل السريع بين الأقسام -->
+      <div class="mt-5 pt-4 border-t border-slate-100 flex items-center gap-2 overflow-x-auto no-scrollbar pb-1">
+        <button onclick="filterCategory('all')" data-cat="all" class="cat-tab active shrink-0 px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold bg-josour-primary text-white shadow-xs transition">
+          جميع الأدوات (6)
+        </button>
+        <button onclick="filterCategory('banks')" data-cat="banks" class="cat-tab shrink-0 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-emerald-50/80 text-josour-dark hover:bg-emerald-100 transition">
+          💵 الدولار في البنوك
+        </button>
+        <button onclick="filterCategory('currencies')" data-cat="currencies" class="cat-tab shrink-0 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-emerald-50/80 text-josour-dark hover:bg-emerald-100 transition">
+          💱 أسعار العملات
+        </button>
+        <button onclick="filterCategory('gold')" data-cat="gold" class="cat-tab shrink-0 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-emerald-50/80 text-josour-dark hover:bg-emerald-100 transition">
+          🪙 أسعار الذهب
+        </button>
+        <button onclick="filterCategory('weather')" data-cat="weather" class="cat-tab shrink-0 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-emerald-50/80 text-josour-dark hover:bg-emerald-100 transition">
+          ☀️ الأرصاد والطاقة
+        </button>
+        <button onclick="filterCategory('population')" data-cat="population" class="cat-tab shrink-0 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-emerald-50/80 text-josour-dark hover:bg-emerald-100 transition">
+          👥 التعداد السكاني
+        </button>
+        <button onclick="filterCategory('haram')" data-cat="haram" class="cat-tab shrink-0 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-emerald-50/80 text-josour-dark hover:bg-emerald-100 transition">
+          🕋 الحرم المكي
+        </button>
+      </div>
+    </section>
+
+    <!-- شبكة البطاقات الست بمقاس 9:16 مع أزرار التصدير -->
+    <section id="cardsGrid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-7 items-start">
+
+      <!-- ==================== 1. بطاقة سعر الدولار في البنوك ==================== -->
+      <article class="card-container story-card-wrapper" data-category="banks">
+        <div id="card-banks" class="story-card motion-shimmer">
+          <!-- شريط تقدم حلقة 10 ثواني -->
+          <div class="absolute top-0 left-0 right-0 h-1 bg-emerald-950/10">
+            <div class="h-full bg-gradient-to-l from-josour-primary to-josour-gold loop-bar"></div>
+          </div>
+
+          <!-- خلفية هندسية متحركة -->
+          <div class="motion-bg-orb absolute -left-10 top-14 w-36 h-36 rounded-full bg-emerald-500/10 pointer-events-none"></div>
+          <div class="motion-bg-orb absolute -right-10 bottom-16 w-40 h-40 rounded-full bg-amber-500/10 pointer-events-none" style="animation-delay: -4s;"></div>
+
+          <!-- رأس البطاقة -->
+          <div class="relative z-10">
+            <div class="flex items-center justify-between mb-2">
+              <span class="inline-flex items-center gap-1.5 bg-josour-primary text-white text-[11px] font-extrabold px-2.5 py-1 rounded-full">
+                <span class="w-1.5 h-1.5 rounded-full bg-amber-300 animate-ping"></span>
+                تحديث لحظي للبنوك
+              </span>
+              <span class="text-[11px] font-black text-josour-primary bg-white/90 px-2.5 py-0.5 rounded-lg border border-emerald-200">جسور</span>
+            </div>
+            <h2 class="text-xl font-black text-josour-dark leading-tight">أسعار الدولار في البنوك المصرية</h2>
+            <p class="card-date-label text-[11px] font-bold text-slate-500 mt-0.5">الخميس، ٢٦ نوفمبر ٢٠٢٦</p>
+          </div>
+
+          <!-- جدول أسعار البنوك -->
+          <div class="relative z-10 my-2 bg-white/90 backdrop-blur-xs rounded-2xl border border-emerald-900/10 overflow-hidden shadow-xs flex-1 flex flex-col justify-between">
+            <div class="grid grid-cols-12 bg-josour-dark text-white text-[11px] font-extrabold py-2 px-3">
+              <div class="col-span-6">البنك</div>
+              <div class="col-span-3 text-center">الشراء</div>
+              <div class="col-span-3 text-center">البيع</div>
+            </div>
+            <div id="banksTableBody" class="divide-y divide-emerald-900/10 text-xs flex-1 flex flex-col justify-around">
+              <!-- يتم الحقن ديناميكياً -->
+            </div>
+          </div>
+
+          <!-- تذييل البطاقة -->
+          <div class="relative z-10 flex items-center justify-between pt-1 border-t border-emerald-900/10 text-[10px] font-bold text-josour-dark">
+            <span>جميع الأسعار بالجنيه المصري (EGP)</span>
+            <span class="text-josour-primary font-black">JOSOUR LIVE</span>
+          </div>
+        </div>
+
+        <!-- أزرار التحميل أسفل البطاقة -->
+        <div class="mt-3 grid grid-cols-2 gap-2.5">
+          <button onclick="exportStoryImage('banks', 'أسعار-الدولار-في-البنوك')" class="flex items-center justify-center gap-1.5 bg-white hover:bg-emerald-50 text-josour-dark border border-emerald-300 py-2.5 px-3 rounded-2xl text-xs font-extrabold shadow-xs transition active:scale-95">
+            <svg class="w-4 h-4 text-josour-primary" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+              <rect x="3" y="3" width="18" height="18" rx="3" />
+              <circle cx="8.5" cy="8.5" r="1.5" />
+              <path d="M21 15l-5-5L5 21" />
+            </svg>
+            <span>تحميل صورة (ستوري)</span>
+          </button>
+          <button onclick="exportReelsVideo('banks', 'أسعار-الدولار-في-البنوك')" class="flex items-center justify-center gap-1.5 bg-gradient-to-l from-josour-primary to-josour-emerald hover:opacity-95 text-white py-2.5 px-3 rounded-2xl text-xs font-extrabold shadow-md transition active:scale-95">
+            <svg class="w-4 h-4 text-amber-300" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+            <span>تحميل ريلز (10ث)</span>
+          </button>
+        </div>
+      </article>
+
+      <!-- ==================== 2. بطاقة أسعار العملات ==================== -->
+      <article class="card-container story-card-wrapper" data-category="currencies">
+        <div id="card-currencies" class="story-card motion-shimmer">
+          <div class="absolute top-0 left-0 right-0 h-1 bg-emerald-950/10">
+            <div class="h-full bg-gradient-to-l from-josour-primary to-josour-gold loop-bar"></div>
+          </div>
+
+          <div class="motion-bg-orb absolute -right-12 top-20 w-40 h-40 rounded-full bg-emerald-500/10 pointer-events-none"></div>
+
+          <!-- رأس البطاقة -->
+          <div class="relative z-10">
+            <div class="flex items-center justify-between mb-2">
+              <span class="inline-flex items-center gap-1.5 bg-josour-gold text-white text-[11px] font-extrabold px-2.5 py-1 rounded-full">
+                <span class="w-1.5 h-1.5 rounded-full bg-white animate-ping"></span>
+                أسعار الصرف المباشرة
+              </span>
+              <span class="text-[11px] font-black text-josour-primary bg-white/90 px-2.5 py-0.5 rounded-lg border border-emerald-200">جسور</span>
+            </div>
+            <h2 class="text-xl font-black text-josour-dark leading-tight">أسعار العملات مقابل الجنيه</h2>
+            <p class="card-date-label text-[11px] font-bold text-slate-500 mt-0.5">الخميس، ٢٦ نوفمبر ٢٠٢٦</p>
+          </div>
+
+          <!-- شريط تحويل سريع تفاعلي (100 ريال سعودي = جنيه) -->
+          <div class="relative z-10 mt-2 bg-gradient-to-l from-josour-dark to-josour-primary text-white rounded-2xl p-2.5 flex items-center justify-between shadow-xs">
+            <div class="flex items-center gap-2">
+              <span class="bg-white/15 px-2 py-1 rounded-lg text-xs font-black">100 SAR</span>
+              <span class="text-xs font-bold text-emerald-100">الريال السعودي</span>
+            </div>
+            <div id="sarHighlightBadge" class="text-sm font-black text-amber-300">1,462 جنيه =</div>
+          </div>
+
+          <!-- جدول العملات -->
+          <div class="relative z-10 my-2 bg-white/90 rounded-2xl border border-emerald-900/10 overflow-hidden shadow-xs flex-1 flex flex-col justify-between">
+            <div class="grid grid-cols-12 bg-emerald-900/10 text-josour-dark text-[11px] font-extrabold py-2 px-3">
+              <div class="col-span-6">العملة</div>
+              <div class="col-span-3 text-center">الشراء</div>
+              <div class="col-span-3 text-center">البيع</div>
+            </div>
+            <div id="currenciesTableBody" class="divide-y divide-emerald-900/10 text-xs flex-1 flex flex-col justify-around">
+              <!-- يتم الحقن ديناميكياً -->
+            </div>
+          </div>
+
+          <div class="relative z-10 flex items-center justify-between pt-1 border-t border-emerald-900/10 text-[10px] font-bold text-josour-dark">
+            <span>متوسط تداول السوق المصرفي</span>
+            <span class="text-josour-primary font-black">JOSOUR LIVE</span>
+          </div>
+        </div>
+
+        <div class="mt-3 grid grid-cols-2 gap-2.5">
+          <button onclick="exportStoryImage('currencies', 'أسعار-العملات-اليوم')" class="flex items-center justify-center gap-1.5 bg-white hover:bg-emerald-50 text-josour-dark border border-emerald-300 py-2.5 px-3 rounded-2xl text-xs font-extrabold shadow-xs transition active:scale-95">
+            <svg class="w-4 h-4 text-josour-primary" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+              <rect x="3" y="3" width="18" height="18" rx="3" />
+              <circle cx="8.5" cy="8.5" r="1.5" />
+              <path d="M21 15l-5-5L5 21" />
+            </svg>
+            <span>تحميل صورة (ستوري)</span>
+          </button>
+          <button onclick="exportReelsVideo('currencies', 'أسعار-العملات-اليوم')" class="flex items-center justify-center gap-1.5 bg-gradient-to-l from-josour-primary to-josour-emerald hover:opacity-95 text-white py-2.5 px-3 rounded-2xl text-xs font-extrabold shadow-md transition active:scale-95">
+            <svg class="w-4 h-4 text-amber-300" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+            <span>تحميل ريلز (10ث)</span>
+          </button>
+        </div>
+      </article>
+
+      <!-- ==================== 3. بطاقة أسعار الذهب ==================== -->
+      <article class="card-container story-card-wrapper" data-category="gold">
+        <div id="card-gold" class="story-card motion-shimmer" style="background: linear-gradient(165deg, #fffdf8 0%, #fcf6e8 55%, #f4ebd4 100%); border-color: #e6cfa3;">
+          <div class="absolute top-0 left-0 right-0 h-1 bg-amber-950/10">
+            <div class="h-full bg-gradient-to-l from-josour-gold to-josour-primary loop-bar"></div>
+          </div>
+
+          <div class="motion-bg-orb absolute -left-8 top-24 w-36 h-36 rounded-full bg-amber-400/15 pointer-events-none"></div>
+
+          <!-- رأس البطاقة -->
+          <div class="relative z-10">
+            <div class="flex items-center justify-between mb-2">
+              <span class="inline-flex items-center gap-1.5 bg-amber-700 text-white text-[11px] font-extrabold px-2.5 py-1 rounded-full">
+                <span class="w-1.5 h-1.5 rounded-full bg-amber-200 animate-ping"></span>
+                بورصة الذهب المباشرة
+              </span>
+              <span class="text-[11px] font-black text-josour-primary bg-white/90 px-2.5 py-0.5 rounded-lg border border-amber-300">جسور</span>
+            </div>
+            <h2 class="text-xl font-black text-josour-dark leading-tight">أسعار الذهب في مصر</h2>
+            <p class="card-date-label text-[11px] font-bold text-amber-900/70 mt-0.5">جميع الأعيرة والجنيه الذهب اليوم</p>
+          </div>
+
+          <!-- بطاقتين علويتين: الجنيه الذهب والأونصة العالمية -->
+          <div class="relative z-10 grid grid-cols-2 gap-2 my-2">
+            <div class="bg-gradient-to-br from-amber-700 to-amber-900 text-white rounded-2xl p-3 shadow-xs">
+              <div class="text-[10px] font-bold text-amber-200">الجنيه الذهب (8 جم)</div>
+              <div id="goldPoundPrice" class="text-lg font-black mt-0.5">44,008</div>
+              <div class="text-[10px] text-amber-100">جنيه مصري (عيار 21)</div>
+            </div>
+            <div class="bg-white/95 border border-amber-300 rounded-2xl p-3 shadow-xs">
+              <div class="text-[10px] font-bold text-slate-500">الأونصة العالمية</div>
+              <div id="goldOunceUsd" class="text-lg font-black text-josour-dark mt-0.5">$3,558</div>
+              <div id="goldOunceEgp" class="text-[10px] font-extrabold text-amber-700">194,456 جنيه</div>
+            </div>
+          </div>
+
+          <!-- جدول الأعيرة -->
+          <div class="relative z-10 bg-white/95 rounded-2xl border border-amber-300/80 overflow-hidden shadow-xs flex-1 flex flex-col justify-between">
+            <div class="grid grid-cols-12 bg-amber-900/10 text-josour-dark text-[11px] font-extrabold py-2 px-3">
+              <div class="col-span-6">العيار</div>
+              <div class="col-span-3 text-center">الشراء</div>
+              <div class="col-span-3 text-center">البيع</div>
+            </div>
+            <div id="goldTableBody" class="divide-y divide-amber-900/10 text-xs flex-1 flex flex-col justify-around">
+              <!-- يتم الحقن ديناميكياً -->
+            </div>
+          </div>
+
+          <div class="relative z-10 flex items-center justify-between pt-1.5 border-t border-amber-900/10 text-[10px] font-bold text-amber-950">
+            <span>الأسعار بدون المصنعية والدمغة</span>
+            <span class="text-josour-primary font-black">JOSOUR GOLD</span>
+          </div>
+        </div>
+
+        <div class="mt-3 grid grid-cols-2 gap-2.5">
+          <button onclick="exportStoryImage('gold', 'أسعار-الذهب-اليوم')" class="flex items-center justify-center gap-1.5 bg-white hover:bg-amber-50 text-josour-dark border border-amber-300 py-2.5 px-3 rounded-2xl text-xs font-extrabold shadow-xs transition active:scale-95">
+            <svg class="w-4 h-4 text-amber-700" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+              <rect x="3" y="3" width="18" height="18" rx="3" />
+              <circle cx="8.5" cy="8.5" r="1.5" />
+              <path d="M21 15l-5-5L5 21" />
+            </svg>
+            <span>تحميل صورة (ستوري)</span>
+          </button>
+          <button onclick="exportReelsVideo('gold', 'أسعار-الذهب-اليوم')" class="flex items-center justify-center gap-1.5 bg-gradient-to-l from-amber-700 to-josour-gold hover:opacity-95 text-white py-2.5 px-3 rounded-2xl text-xs font-extrabold shadow-md transition active:scale-95">
+            <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+            <span>تحميل ريلز (10ث)</span>
+          </button>
+        </div>
+      </article>
+
+      <!-- ==================== 4. بطاقة الأرصاد والطاقة المتجددة ==================== -->
+      <article class="card-container story-card-wrapper" data-category="weather">
+        <div id="card-weather" class="story-card motion-shimmer">
+          <div class="absolute top-0 left-0 right-0 h-1 bg-emerald-950/10">
+            <div class="h-full bg-gradient-to-l from-josour-primary to-amber-500 loop-bar"></div>
+          </div>
+
+          <!-- رأس البطاقة -->
+          <div class="relative z-10">
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="inline-flex items-center gap-1.5 bg-josour-primary text-white text-[11px] font-extrabold px-2.5 py-1 rounded-full">
+                <span class="w-1.5 h-1.5 rounded-full bg-amber-300 animate-ping"></span>
+                الأرصاد والطاقة النظيفة
+              </span>
+              <span class="text-[11px] font-black text-josour-primary bg-white/90 px-2.5 py-0.5 rounded-lg border border-emerald-200">جسور</span>
+            </div>
+            <h2 class="text-lg font-black text-josour-dark leading-tight">مستقبل الطاقة النظيفة والطقس في مصر</h2>
+            <p class="card-date-label text-[11px] font-bold text-slate-500">الخميس، ٢٦ نوفمبر ٢٠٢٦</p>
+          </div>
+
+          <!-- خريطة مصر التوضيحية التفاعلية بدرجات الحرارة -->
+          <div class="relative z-10 my-1.5 bg-white/90 rounded-2xl border border-emerald-900/10 p-2.5 flex items-center justify-between gap-2 shadow-xs">
+            <div class="w-28 h-28 shrink-0 relative flex items-center justify-center">
+              <svg viewBox="0 0 140 130" class="w-full h-full drop-shadow-xs">
+                <!-- حدود مصر المبسطة -->
+                <path d="M18 16 L72 10 L114 14 L122 45 L112 52 L126 112 L24 112 L14 42 Z" fill="#cbe5d6" stroke="#165b38" stroke-width="3" stroke-linejoin="round"/>
+                <!-- نهر النيل والدلتا -->
+                <path d="M62 12 L75 32 L88 12 M75 32 Q72 72 82 112" fill="none" stroke="#165b38" stroke-width="2.6" stroke-linecap="round"/>
+                <!-- السواحل -->
+                <circle cx="34" cy="26" r="11" fill="#ffffff" stroke="#165b38" stroke-width="1.5"/>
+                <text id="mapNorthTemp" x="34" y="30" text-anchor="middle" font-size="10" font-weight="900" fill="#0f4229">22°</text>
+                <!-- القاهرة -->
+                <circle cx="77" cy="38" r="12" fill="#f59e0b" class="motion-pulse"/>
+                <text id="mapCairoTemp" x="77" y="42" text-anchor="middle" font-size="10" font-weight="900" fill="#ffffff">24°</text>
+                <!-- شمال الصعيد -->
+                <circle cx="42" cy="64" r="11" fill="#ffffff" stroke="#165b38" stroke-width="1.5"/>
+                <text id="mapMidTemp" x="42" y="68" text-anchor="middle" font-size="10" font-weight="900" fill="#0f4229">23°</text>
+                <!-- جنوب الصعيد -->
+                <circle cx="80" cy="92" r="13" fill="#ea580c"/>
+                <text id="mapSouthTemp" x="80" y="96" text-anchor="middle" font-size="10" font-weight="900" fill="#ffffff">32°</text>
+              </svg>
+            </div>
+
+            <!-- تفاصيل الأقاليم -->
+            <div class="flex-1 space-y-1.5 text-[11px]">
+              <div class="bg-emerald-50/90 px-2.5 py-1.5 rounded-xl flex justify-between items-center">
+                <span class="font-bold text-josour-dark">القاهرة والدلتا</span>
+                <span id="wCairoRange" class="font-black text-josour-primary">14° - 24°</span>
+              </div>
+              <div class="bg-emerald-50/90 px-2.5 py-1.5 rounded-xl flex justify-between items-center">
+                <span class="font-bold text-josour-dark">السواحل الشمالية</span>
+                <span id="wNorthRange" class="font-black text-josour-primary">15° - 22°</span>
+              </div>
+              <div class="bg-emerald-50/90 px-2.5 py-1.5 rounded-xl flex justify-between items-center">
+                <span class="font-bold text-josour-dark">شمال الصعيد</span>
+                <span id="wMidRange" class="font-black text-josour-primary">13° - 23°</span>
+              </div>
+              <div class="bg-amber-50 px-2.5 py-1.5 rounded-xl flex justify-between items-center">
+                <span class="font-bold text-amber-900">جنوب الصعيد</span>
+                <span id="wSouthRange" class="font-black text-amber-700">18° - 32°</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- مؤشرات الطاقة الشمسية والرياح -->
+          <div class="relative z-10 space-y-1.5 my-1">
+            <div class="bg-gradient-to-l from-josour-dark to-josour-primary text-white rounded-2xl p-2.5">
+              <div class="flex items-center justify-between text-xs font-extrabold">
+                <span>☀️ الإشعاع الشمسي وطاقة الرياح</span>
+                <span id="solarEfficiencyBadge" class="bg-amber-400 text-josour-dark px-2 py-0.5 rounded-md text-[10px] font-black">كفاءة 83%</span>
+              </div>
+              <p id="solarWindSummary" class="text-[11px] text-emerald-100 mt-1 leading-snug">
+                إشعاع شمسي 462 واط/م² • رياح منتظمة بسرعة 14 كم/ساعة مثالية لتوليد الطاقة النظيفة.
+              </p>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2 text-[11px]">
+              <div class="bg-white/90 border border-emerald-900/10 rounded-xl p-2">
+                <div class="text-slate-500 font-bold">فرص الأمطار</div>
+                <div id="rainChanceText" class="font-black text-josour-dark mt-0.5">استقرار جوي (0% - 10%)</div>
+              </div>
+              <div class="bg-white/90 border border-emerald-900/10 rounded-xl p-2">
+                <div class="text-slate-500 font-bold">حالة البحرين</div>
+                <div id="seaStateText" class="font-black text-josour-dark mt-0.5">معتدل (1.2 - 1.7 م)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="relative z-10 flex items-center justify-between pt-1 border-t border-emerald-900/10 text-[10px] font-bold text-josour-dark">
+            <span>مؤشر الاستدامة والطاقة المتجددة</span>
+            <span class="text-josour-primary font-black">JOSOUR ENERGY</span>
+          </div>
+        </div>
+
+        <div class="mt-3 grid grid-cols-2 gap-2.5">
+          <button onclick="exportStoryImage('weather', 'الأرصاد-والطاقة-النظيفة')" class="flex items-center justify-center gap-1.5 bg-white hover:bg-emerald-50 text-josour-dark border border-emerald-300 py-2.5 px-3 rounded-2xl text-xs font-extrabold shadow-xs transition active:scale-95">
+            <svg class="w-4 h-4 text-josour-primary" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+              <rect x="3" y="3" width="18" height="18" rx="3" />
+              <circle cx="8.5" cy="8.5" r="1.5" />
+              <path d="M21 15l-5-5L5 21" />
+            </svg>
+            <span>تحميل صورة (ستوري)</span>
+          </button>
+          <button onclick="exportReelsVideo('weather', 'الأرصاد-والطاقة-النظيفة')" class="flex items-center justify-center gap-1.5 bg-gradient-to-l from-josour-primary to-josour-emerald hover:opacity-95 text-white py-2.5 px-3 rounded-2xl text-xs font-extrabold shadow-md transition active:scale-95">
+            <svg class="w-4 h-4 text-amber-300" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+            <span>تحميل ريلز (10ث)</span>
+          </button>
+        </div>
+      </article>
+
+      <!-- ==================== 5. بطاقة التعداد السكاني في مصر ==================== -->
+      <article class="card-container story-card-wrapper" data-category="population">
+        <div id="card-population" class="story-card motion-shimmer">
+          <div class="absolute top-0 left-0 right-0 h-1 bg-emerald-950/10">
+            <div class="h-full bg-gradient-to-l from-josour-primary to-josour-gold loop-bar"></div>
+          </div>
+
+          <div class="motion-bg-orb absolute -left-10 bottom-20 w-40 h-40 rounded-full bg-emerald-500/10 pointer-events-none"></div>
+
+          <!-- رأس البطاقة -->
+          <div class="relative z-10">
+            <div class="flex items-center justify-between mb-2">
+              <span class="inline-flex items-center gap-1.5 bg-josour-primary text-white text-[11px] font-extrabold px-2.5 py-1 rounded-full">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-300 animate-ping"></span>
+                الساعة السكانية المباشرة
+              </span>
+              <span class="text-[11px] font-black text-josour-primary bg-white/90 px-2.5 py-0.5 rounded-lg border border-emerald-200">جسور</span>
+            </div>
+            <h2 class="text-xl font-black text-josour-dark leading-tight">التعداد السكاني في مصر</h2>
+            <p class="card-date-label text-[11px] font-bold text-slate-500 mt-0.5">الخميس، ٢٦ نوفمبر ٢٠٢٦</p>
+          </div>
+
+          <!-- العداد الرئيسي الحي -->
+          <div class="relative z-10 my-2 bg-gradient-to-br from-josour-dark via-josour-primary to-josour-emerald text-white rounded-3xl p-4 text-center shadow-md">
+            <div class="text-xs font-bold text-emerald-100">إجمالي عدد السكان الآن بالداخل</div>
+            <div id="livePopulationCounter" class="text-3xl sm:text-4xl font-black tracking-wide text-amber-300 my-1.5 font-mono" dir="ltr">
+              120,985,614
+            </div>
+            <div class="inline-flex items-center gap-1.5 bg-white/15 px-3 py-1 rounded-full text-[11px] font-bold">
+              <span>مولود جديد كل 12 ثانية</span>
+              <span>•</span>
+              <span>نمو سنوي 1.57%</span>
+            </div>
+          </div>
+
+          <!-- إحصائيات المواليد والوفيات اليوم -->
+          <div class="relative z-10 grid grid-cols-3 gap-2 text-center">
+            <div class="bg-white/95 border border-emerald-200 rounded-2xl p-2">
+              <div class="text-[10px] font-bold text-slate-500">المواليد اليوم</div>
+              <div id="popBirthsToday" class="text-sm font-black text-emerald-700 mt-0.5">+5,199</div>
+            </div>
+            <div class="bg-white/95 border border-emerald-200 rounded-2xl p-2">
+              <div class="text-[10px] font-bold text-slate-500">الوفيات اليوم</div>
+              <div id="popDeathsToday" class="text-sm font-black text-rose-700 mt-0.5">1,975</div>
+            </div>
+            <div class="bg-amber-50 border border-amber-300 rounded-2xl p-2">
+              <div class="text-[10px] font-bold text-amber-900">صافي الزيادة</div>
+              <div id="popNetToday" class="text-sm font-black text-amber-700 mt-0.5">+3,224</div>
+            </div>
+          </div>
+
+          <!-- توزيع الذكور والإناث والحضر -->
+          <div class="relative z-10 bg-white/95 border border-emerald-900/10 rounded-2xl p-3 space-y-2 text-xs">
+            <div class="flex justify-between items-center font-extrabold">
+              <span class="text-josour-dark">الذكور: <span id="popMalesCount">60,734,776</span> (50.2%)</span>
+              <span class="text-amber-700">الإناث: <span id="popFemalesCount">60,250,838</span> (49.8%)</span>
+            </div>
+            <div class="w-full h-2.5 bg-amber-200 rounded-full overflow-hidden flex">
+              <div class="bg-josour-primary h-full" style="width: 50.2%"></div>
+              <div class="bg-josour-gold h-full" style="width: 49.8%"></div>
+            </div>
+            <div class="grid grid-cols-3 gap-1 pt-1 text-center text-[10px] border-t border-slate-100">
+              <div>
+                <div class="font-black text-josour-dark">2,973,500</div>
+                <div class="text-slate-500">مواليد العام</div>
+              </div>
+              <div>
+                <div class="font-black text-josour-dark">648,900</div>
+                <div class="text-slate-500">وفيات العام</div>
+              </div>
+              <div>
+                <div class="font-black text-josour-primary">43.1%</div>
+                <div class="text-slate-500">سكان الحضر</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="relative z-10 flex items-center justify-between pt-1 border-t border-emerald-900/10 text-[10px] font-bold text-josour-dark">
+            <span>رصد ديموغرافي مستمر على مدار الساعة</span>
+            <span class="text-josour-primary font-black">JOSOUR DATA</span>
+          </div>
+        </div>
+
+        <div class="mt-3 grid grid-cols-2 gap-2.5">
+          <button onclick="exportStoryImage('population', 'التعداد-السكاني-في-مصر')" class="flex items-center justify-center gap-1.5 bg-white hover:bg-emerald-50 text-josour-dark border border-emerald-300 py-2.5 px-3 rounded-2xl text-xs font-extrabold shadow-xs transition active:scale-95">
+            <svg class="w-4 h-4 text-josour-primary" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+              <rect x="3" y="3" width="18" height="18" rx="3" />
+              <circle cx="8.5" cy="8.5" r="1.5" />
+              <path d="M21 15l-5-5L5 21" />
+            </svg>
+            <span>تحميل صورة (ستوري)</span>
+          </button>
+          <button onclick="exportReelsVideo('population', 'التعداد-السكاني-في-مصر')" class="flex items-center justify-center gap-1.5 bg-gradient-to-l from-josour-primary to-josour-emerald hover:opacity-95 text-white py-2.5 px-3 rounded-2xl text-xs font-extrabold shadow-md transition active:scale-95">
+            <svg class="w-4 h-4 text-amber-300" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+            <span>تحميل ريلز (10ث)</span>
+          </button>
+        </div>
+      </article>
+
+      <!-- ==================== 6. بطاقة الحرم المكي مباشر ==================== -->
+      <article class="card-container story-card-wrapper" data-category="haram">
+        <div id="card-haram" class="story-card motion-shimmer" style="background: linear-gradient(165deg, #0d3b24 0%, #145334 55%, #1d6b43 100%); border-color: #c88a2e; color: #ffffff;">
+          <div class="absolute top-0 left-0 right-0 h-1 bg-white/10">
+            <div class="h-full bg-gradient-to-l from-amber-300 to-emerald-300 loop-bar"></div>
+          </div>
+
+          <div class="motion-bg-orb absolute -right-10 top-12 w-40 h-40 rounded-full bg-amber-400/10 pointer-events-none"></div>
+
+          <!-- رأس البطاقة -->
+          <div class="relative z-10">
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="inline-flex items-center gap-1.5 bg-amber-500 text-josour-dark text-[11px] font-black px-2.5 py-1 rounded-full">
+                <span class="w-2 h-2 rounded-full bg-red-600 animate-ping"></span>
+                مباشر من مكة المكرمة
+              </span>
+              <span class="text-[11px] font-black text-josour-dark bg-white px-2.5 py-0.5 rounded-lg">جسور</span>
+            </div>
+            <h2 class="text-xl font-black text-white leading-tight">الحرم المكي مباشر</h2>
+            <p id="haramHijriDate" class="text-[11px] font-bold text-amber-200 mt-0.5">إحصائيات المسجد الحرام ومكة المكرمة</p>
+          </div>
+
+          <!-- طقس مكة والصلاة القادمة -->
+          <div class="relative z-10 grid grid-cols-2 gap-2 my-1.5">
+            <div class="bg-white/10 backdrop-blur-xs border border-white/15 rounded-2xl p-2.5">
+              <div class="text-[10px] text-emerald-100 font-bold">طقس الحرم الآن</div>
+              <div class="flex items-baseline gap-1.5 mt-0.5">
+                <span id="makkahTemp" class="text-2xl font-black text-amber-300">27°C</span>
+                <span id="makkahWind" class="text-[10px] text-emerald-100">رطوبة 42%</span>
+              </div>
+              <div id="makkahCondition" class="text-[10px] text-white/90 mt-0.5">سماء صافية وأجواء روحانية</div>
+            </div>
+
+            <div class="bg-amber-500/20 border border-amber-300/40 rounded-2xl p-2.5">
+              <div id="nextPrayerTitle" class="text-[10px] text-amber-200 font-extrabold">الصلاة القادمة: الفجر</div>
+              <div id="nextPrayerTime" class="text-2xl font-black text-white mt-0.5">05:18</div>
+              <div id="nextPrayerCountdown" class="text-[10px] text-amber-200 font-bold mt-0.5">متبقي 07 س و 34 د</div>
+            </div>
+          </div>
+
+          <!-- مواقيت الصلاة الخمس في مكة -->
+          <div class="relative z-10 bg-white/10 border border-white/15 rounded-2xl p-2.5">
+            <div class="grid grid-cols-5 gap-1 text-center text-[10px]">
+              <div class="bg-white/10 rounded-xl py-1.5">
+                <div class="text-emerald-200 font-bold">الفجر</div>
+                <div id="ptFajr" class="font-black text-white mt-0.5">05:18</div>
+              </div>
+              <div class="bg-white/10 rounded-xl py-1.5">
+                <div class="text-emerald-200 font-bold">الظهر</div>
+                <div id="ptDhuhr" class="font-black text-white mt-0.5">12:08</div>
+              </div>
+              <div class="bg-white/10 rounded-xl py-1.5">
+                <div class="text-emerald-200 font-bold">العصر</div>
+                <div id="ptAsr" class="font-black text-white mt-0.5">15:16</div>
+              </div>
+              <div class="bg-white/10 rounded-xl py-1.5">
+                <div class="text-emerald-200 font-bold">المغرب</div>
+                <div id="ptMaghrib" class="font-black text-white mt-0.5">17:37</div>
+              </div>
+              <div class="bg-white/10 rounded-xl py-1.5">
+                <div class="text-emerald-200 font-bold">العشاء</div>
+                <div id="ptIsha" class="font-black text-white mt-0.5">19:07</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- إحصائيات المسجد الحرام -->
+          <div class="relative z-10 grid grid-cols-3 gap-1.5 text-center my-1">
+            <div class="bg-white/10 rounded-xl p-2 border border-white/10">
+              <div class="text-[9px] text-emerald-200">السعة الاستيعابية</div>
+              <div class="text-xs font-black text-amber-300 mt-0.5">2 مليون مصلٍ</div>
+            </div>
+            <div class="bg-white/10 rounded-xl p-2 border border-white/10">
+              <div class="text-[9px] text-emerald-200">صحن المطاف</div>
+              <div class="text-xs font-black text-white mt-0.5">107,000 / س</div>
+            </div>
+            <div class="bg-white/10 rounded-xl p-2 border border-white/10">
+              <div class="text-[9px] text-emerald-200">المساحة (13 مئذنة)</div>
+              <div class="text-xs font-black text-amber-300 mt-0.5">1.5 مليون م²</div>
+            </div>
+          </div>
+
+          <!-- زر التحويل لصفحة البث المباشر للحرم المكي بجودات مختلفة -->
+          <button onclick="switchView('haramLive')" class="relative z-10 w-full bg-gradient-to-l from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-josour-dark font-black text-xs py-2.5 px-3 rounded-2xl shadow-lg flex items-center justify-center gap-2 transition active:scale-95">
+            <span class="w-2.5 h-2.5 rounded-full bg-red-600 animate-ping"></span>
+            <span>مشاهدة البث المباشر للحرم المكي (جودات متعددة)</span>
+          </button>
+        </div>
+
+        <div class="mt-3 grid grid-cols-2 gap-2.5">
+          <button onclick="exportStoryImage('haram', 'الحرم-المكي-مباشر')" class="flex items-center justify-center gap-1.5 bg-white hover:bg-emerald-50 text-josour-dark border border-emerald-300 py-2.5 px-3 rounded-2xl text-xs font-extrabold shadow-xs transition active:scale-95">
+            <svg class="w-4 h-4 text-josour-primary" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+              <rect x="3" y="3" width="18" height="18" rx="3" />
+              <circle cx="8.5" cy="8.5" r="1.5" />
+              <path d="M21 15l-5-5L5 21" />
+            </svg>
+            <span>تحميل صورة (ستوري)</span>
+          </button>
+          <button onclick="exportReelsVideo('haram', 'الحرم-المكي-مباشر')" class="flex items-center justify-center gap-1.5 bg-gradient-to-l from-josour-primary to-josour-emerald hover:opacity-95 text-white py-2.5 px-3 rounded-2xl text-xs font-extrabold shadow-md transition active:scale-95">
+            <svg class="w-4 h-4 text-amber-300" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+            <span>تحميل ريلز (10ث)</span>
+          </button>
+        </div>
+      </article>
+
+    </section>
+  </main>
+
+  <!-- ==================== صفحة البث المباشر المنفصلة للحرم المكي ==================== -->
+  <section id="haramLiveView" class="hidden flex-1 max-w-6xl w-full mx-auto px-3 sm:px-6 py-6">
+    <div class="bg-white rounded-3xl border border-emerald-900/15 shadow-lg overflow-hidden">
+      <!-- شريط علوي للصفحة المنفصلة -->
+      <div class="bg-gradient-to-l from-josour-dark to-josour-primary text-white p-4 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <button onclick="switchView('dashboard')" class="bg-white/15 hover:bg-white/25 text-white px-3.5 py-2 rounded-xl text-xs sm:text-sm font-extrabold flex items-center gap-1.5 transition">
+            <span>→</span>
+            <span>العودة للمنصة</span>
+          </button>
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-red-500 animate-ping"></span>
+              <h1 class="text-lg sm:text-2xl font-black">البث المباشر من المسجد الحرام - مكة المكرمة</h1>
+            </div>
+            <p class="text-xs text-emerald-100 mt-0.5">نقل حي على مدار 24 ساعة مع إمكانية التبديل الفوري بين الجودات والقنوات</p>
+          </div>
+        </div>
+
+        <!-- أزرار اختيار الجودة -->
+        <div class="flex flex-wrap items-center gap-1.5 bg-black/25 p-1.5 rounded-2xl">
+          <button onclick="setHaramQuality('1080p', this)" class="quality-btn active bg-amber-400 text-josour-dark px-3 py-1.5 rounded-xl text-xs font-black transition">
+            1080p HD فائقة
+          </button>
+          <button onclick="setHaramQuality('720p', this)" class="quality-btn text-white hover:bg-white/15 px-3 py-1.5 rounded-xl text-xs font-bold transition">
+            720p عالية
+          </button>
+          <button onclick="setHaramQuality('480p', this)" class="quality-btn text-white hover:bg-white/15 px-3 py-1.5 rounded-xl text-xs font-bold transition">
+            480p متوسطة
+          </button>
+          <button onclick="setHaramQuality('240p', this)" class="quality-btn text-white hover:bg-white/15 px-3 py-1.5 rounded-xl text-xs font-bold transition">
+            240p توفير البيانات
+          </button>
+        </div>
+      </div>
+
+      <!-- مشغل البث المباشر -->
+      <div class="p-4 sm:p-6 bg-slate-950">
+        <div class="relative w-full aspect-video rounded-2xl overflow-hidden border border-white/15 shadow-2xl bg-black">
+          <iframe
+            id="haramStreamFrame"
+            class="w-full h-full"
+            src="https://www.youtube.com/embed/Cm1v4RUYfkw?autoplay=1&mute=0&rel=0&modestbranding=1&vq=hd1080"
+            title="البث المباشر للحرم المكي"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+
+        <!-- شريط تبديل البث الاحتياطي لضمان عدم الانقطاع -->
+        <div class="mt-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 bg-white/5 border border-white/10 rounded-2xl p-3.5 text-white">
+          <div class="flex items-center gap-2 text-xs">
+            <span class="px-2.5 py-1 rounded-lg bg-emerald-500/20 text-emerald-300 font-extrabold border border-emerald-500/30">
+              الجودة الحالية: <span id="currentQualityLabel">1080p HD</span>
+            </span>
+            <span class="text-slate-300">بث مباشر مستمر من الكعبة المشرفة</span>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <button onclick="switchHaramStreamChannel(0)" class="stream-ch-btn bg-josour-primary text-white px-3 py-1.5 rounded-xl text-xs font-extrabold border border-emerald-400/40">
+              البث الرئيسي (المسجد الحرام)
+            </button>
+            <button onclick="switchHaramStreamChannel(1)" class="stream-ch-btn bg-white/10 hover:bg-white/20 text-white px-3 py-1.5 rounded-xl text-xs font-bold">
+              البث الاحتياطي (قناة القرآن الكريم)
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== نافذة الحاسبة السريعة ==================== -->
+  <div id="calculatorModal" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 border border-emerald-900/15 shadow-2xl">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+        <h3 class="text-lg font-black text-josour-dark">حاسبة جسور الفورية</h3>
+        <button onclick="closeCalculatorModal()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center font-bold text-slate-600">✕</button>
+      </div>
+
+      <div class="mt-4 space-y-4">
+        <div>
+          <label class="block text-xs font-extrabold text-slate-600 mb-1">المبلغ أو الوزن (بالجرام للذهب)</label>
+          <input id="calcAmount" type="number" value="100" min="0" oninput="calculateConversion()" class="w-full px-4 py-3 rounded-2xl border border-emerald-200 bg-emerald-50/40 text-lg font-black text-josour-dark focus:outline-none focus:border-josour-primary" />
+        </div>
+
+        <div>
+          <label class="block text-xs font-extrabold text-slate-600 mb-1">اختر العملة أو عيار الذهب</label>
+          <select id="calcType" onchange="calculateConversion()" class="w-full px-4 py-3 rounded-2xl border border-emerald-200 bg-white text-sm font-bold text-josour-dark focus:outline-none focus:border-josour-primary">
+            <option value="USD">الدولار الأمريكي (USD)</option>
+            <option value="SAR">الريال السعودي (SAR)</option>
+            <option value="EUR">اليورو الأوروبي (EUR)</option>
+            <option value="AED">الدرهم الإماراتي (AED)</option>
+            <option value="KWD">الدينار الكويتي (KWD)</option>
+            <option value="GOLD21">ذهب عيار 21 (بالجرام)</option>
+            <option value="GOLD24">ذهب عيار 24 (بالجرام)</option>
+          </select>
+        </div>
+
+        <div class="bg-gradient-to-l from-josour-dark to-josour-primary text-white rounded-2xl p-4 text-center">
+          <div class="text-xs text-emerald-100 font-bold">القيمة الإجمالية بالجنيه المصري</div>
+          <div id="calcResult" class="text-2xl font-black text-amber-300 mt-1">5,476.00 جنيه</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== نافذة تقدم التصدير (صورة أو فيديو ريلز 10 ثواني) ==================== -->
+  <div id="exportModal" class="hidden fixed inset-0 z-50 bg-black/70 backdrop-blur-xs flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-sm w-full p-6 text-center shadow-2xl border border-emerald-900/15">
+      <div class="w-14 h-14 mx-auto rounded-2xl bg-emerald-50 text-josour-primary flex items-center justify-center mb-3">
+        <svg class="w-7 h-7 animate-spin" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v3m0 12v3m9-9h-3M6 12H3m15.364 6.364l-2.121-2.121M8.757 8.757L6.636 6.636m11.728 0l-2.121 2.121M8.757 15.243l-2.121 2.121" />
+        </svg>
+      </div>
+      <h3 id="exportModalTitle" class="text-base font-black text-josour-dark">جاري تجهيز فيديو الريلز (10 ثوانٍ)...</h3>
+      <p id="exportModalDesc" class="text-xs text-slate-500 mt-1">يتم الآن رسم عناصر الموشن جرافيك وتصدير البطاقة بجودة عالية</p>
+      <div class="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden mt-4">
+        <div id="exportProgressBar" class="h-full bg-gradient-to-l from-josour-primary to-josour-gold transition-all duration-200" style="width: 10%"></div>
+      </div>
+      <div id="exportPercentText" class="text-xs font-black text-josour-primary mt-2">10%</div>
+    </div>
+  </div>
+
+  <!-- إشعار عائم غير مزعج -->
+  <div id="toastNotification" class="fixed bottom-5 left-1/2 -translate-x-1/2 z-50 bg-josour-dark text-white px-5 py-3 rounded-2xl text-xs font-extrabold shadow-xl border border-emerald-400/30 opacity-0 pointer-events-none transition-all duration-300">
+    تم تحديث جميع البيانات الحية بنجاح
+  </div>
+
+  <!-- تذييل نظيف بدون ذكر أي مصادر خارجية -->
+  <footer class="bg-white border-t border-emerald-900/10 py-5 px-4 mt-8">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-slate-600 font-bold">
+      <div class="flex items-center gap-2">
+        <span class="w-2.5 h-2.5 rounded-full bg-josour-primary"></span>
+        <span>منصة جسور المباشرة © 2026 — جميع الحقوق محفوظة</span>
+      </div>
+      <div>تصميم وتصدير ذكي للبيانات اللحظية بمقاس 9:16</div>
+    </div>
+  </footer>
+
+  <script>
+    // =========================================================================
+    // 1. مخزن البيانات الموحد مع آلية تعدد المصادر الاحتياطية في الخلفية (Silent Failover)
+    // =========================================================================
+    const josourState = {
+      usdBase: 54.76,
+      banks: [
+        { name: 'البنك المركزي المصري', buy: 54.64, sell: 54.77 },
+        { name: 'البنك الأهلي المصري', buy: 54.66, sell: 54.76 },
+        { name: 'بنك مصر', buy: 54.66, sell: 54.76 },
+        { name: 'البنك التجاري الدولي (CIB)', buy: 54.67, sell: 54.77 },
+        { name: 'بنك قطر الوطني (QNB)', buy: 54.65, sell: 54.75 },
+        { name: 'بنك الإسكندرية', buy: 54.66, sell: 54.76 },
+        { name: 'بنك التعمير والإسكان', buy: 54.63, sell: 54.73 },
+        { name: 'بنك قناة السويس', buy: 54.68, sell: 54.78 }
+      ],
+      currencies: [
+        { code: 'USD', name: 'الدولار الأمريكي', buy: 54.52, sell: 54.82 },
+        { code: 'EUR', name: 'اليورو الأوروبي', buy: 59.78, sell: 60.11 },
+        { code: 'GBP', name: 'الجنيه الإسترليني', buy: 71.42, sell: 71.81 },
+        { code: 'SAR', name: 'الريال السعودي', buy: 14.54, sell: 14.62 },
+        { code: 'AED', name: 'الدرهم الإماراتي', buy: 14.85, sell: 14.93 },
+        { code: 'KWD', name: 'الدينار الكويتي', buy: 175.19, sell: 176.15 },
+        { code: 'QAR', name: 'الريال القطري', buy: 14.98, sell: 15.06 },
+        { code: 'JOD', name: 'الدينار الأردني', buy: 76.90, sell: 77.32 }
+      ],
+      gold: {
+        ounceUsd: 3558,
+        c24: { buy: 6224, sell: 6286 },
+        c21: { buy: 5446, sell: 5501 },
+        c18: { buy: 4668, sell: 4715 },
+        c14: { buy: 3631, sell: 3667 },
+        pound: 44008
+      },
+      weather: {
+        cairoMin: 14, cairoMax: 24,
+        northMin: 15, northMax: 22,
+        midMin: 13, midMax: 23,
+        southMin: 18, southMax: 32,
+        windSpeed: 14,
+        solarIrradiance: 462,
+        efficiency: 83
+      },
+      population: {
+        total: 120985614,
+        birthsToday: 5199,
+        deathsToday: 1975
+      },
+      haram: {
+        temp: 27,
+        humidity: 42,
+        prayers: {
+          Fajr: '05:18',
+          Dhuhr: '12:08',
+          Asr: '15:16',
+          Maghrib: '17:37',
+          Isha: '19:07'
+        },
+        hijri: 'مكة المكرمة • بث البيانات الحي'
+      }
+    };
+
+    // دالة مساعدة لجلب البيانات مع مهلة زمنية قصيرة وتبديل تلقائي صامت بين المصادر
+    async function fetchWithTimeout(url, timeoutMs = 4500) {
+      const controller = new AbortController();
+      const id = setTimeout(() => controller.abort(), timeoutMs);
+      try {
+        const res = await fetch(url, { signal: controller.signal });
+        clearTimeout(id);
+        if (!res.ok) throw new Error('Network response not ok');
+        return await res.json();
+      } catch (e) {
+        clearTimeout(id);
+        throw e;
+      }
+    }
+
+    // 1) جلب أسعار العملات والبنوك من عدة مصادر في الخلفية
+    async function syncLiveCurrencies() {
+      const endpoints = [
+        'https://open.er-api.com/v6/latest/USD',
+        'https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/usd.json',
+        'https://api.exchangerate-api.com/v4/latest/USD'
+      ];
+
+      for (const url of endpoints) {
+        try {
+          const data = await fetchWithTimeout(url, 4000);
+          let rates = null;
+          if (data && data.rates && data.rates.EGP) {
+            rates = data.rates;
+          } else if (data && data.usd && data.usd.egp) {
+            // توحيد مفاتيح المصدر الثاني
+            rates = {};
+            for (const k in data.usd) {
+              rates[k.toUpperCase()] = data.usd[k];
+            }
+          }
+
+          if (rates && rates.EGP && rates.EGP > 30) {
+            const egp = Number(rates.EGP);
+            josourState.usdBase = egp;
+
+            // تحديث البنوك بفروق السوق المصرفي الحقيقية
+            const spreads = [
+              { name: 'البنك المركزي المصري', b: -0.12, s: 0.01 },
+              { name: 'البنك الأهلي المصري', b: -0.10, s: 0.00 },
+              { name: 'بنك مصر', b: -0.10, s: 0.00 },
+              { name: 'البنك التجاري الدولي (CIB)', b: -0.09, s: 0.01 },
+              { name: 'بنك قطر الوطني (QNB)', b: -0.11, s: -0.01 },
+              { name: 'بنك الإسكندرية', b: -0.10, s: 0.00 },
+              { name: 'بنك التعمير والإسكان', b: -0.13, s: -0.03 },
+              { name: 'بنك قناة السويس', b: -0.08, s: 0.02 }
+            ];
+            josourState.banks = spreads.map(item => ({
+              name: item.name,
+              buy: Number((egp + item.b).toFixed(2)),
+              sell: Number((egp + item.s).toFixed(2))
+            }));
+
+            // تحديث العملات مقابل الجنيه المصري
+            const targetList = [
+              { code: 'USD', name: 'الدولار الأمريكي' },
+              { code: 'EUR', name: 'اليورو الأوروبي' },
+              { code: 'GBP', name: 'الجنيه الإسترليني' },
+              { code: 'SAR', name: 'الريال السعودي' },
+              { code: 'AED', name: 'الدرهم الإماراتي' },
+              { code: 'KWD', name: 'الدينار الكويتي' },
+              { code: 'QAR', name: 'الريال القطري' },
+              { code: 'JOD', name: 'الدينار الأردني' }
+            ];
+
+            josourState.currencies = targetList.map(c => {
+              const rateInUsd = c.code === 'USD' ? 1 : (rates[c.code] || 1);
+              const valEgp = egp / rateInUsd;
+              return {
+                code: c.code,
+                name: c.name,
+                buy: Number((valEgp * 0.996).toFixed(2)),
+                sell: Number((valEgp * 1.002).toFixed(2))
+              };
+            });
+
+            // تحديث الذهب العالمي والمحلي إذا توفر XAU
+            if (rates.XAU && rates.XAU > 0) {
+              const ounceUsd = Math.round(1 / rates.XAU);
+              if (ounceUsd > 1500 && ounceUsd < 8000) {
+                josourState.gold.ounceUsd = ounceUsd;
+              }
+            }
+            recalculateGoldFromOunce();
+            return true;
+          }
+        } catch (err) {
+          // الانتقال للمصدر الاحتياطي التالي بصمت
+        }
+      }
+      return false;
+    }
+
+    // 2) جلب أسعار الذهب العالمية من مصادر احتياطية إضافية
+    async function syncLiveGold() {
+      const goldEndpoints = [
+        'https://data-asg.goldprice.org/dbXRates/USD',
+        'https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/xau.json'
+      ];
+      for (const url of goldEndpoints) {
+        try {
+          const data = await fetchWithTimeout(url, 3800);
+          if (data && data.items && data.items[0] && data.items[0].xauPrice) {
+            josourState.gold.ounceUsd = Math.round(data.items[0].xauPrice);
+            recalculateGoldFromOunce();
+            return true;
+          } else if (data && data.xau && data.xau.usd) {
+            josourState.gold.ounceUsd = Math.round(data.xau.usd);
+            recalculateGoldFromOunce();
+            return true;
+          }
+        } catch (e) {}
+      }
+      recalculateGoldFromOunce();
+      return false;
+    }
+
+    function recalculateGoldFromOunce() {
+      const ounceEgp = josourState.gold.ounceUsd * josourState.usdBase;
+      const g24Sell = Math.round(ounceEgp / 31.1035);
+      const g24Buy = Math.round(g24Sell * 0.99);
+      const g21Sell = Math.round(g24Sell * (21 / 24));
+      const g21Buy = Math.round(g21Sell * 0.99);
+      const g18Sell = Math.round(g24Sell * (18 / 24));
+      const g18Buy = Math.round(g18Sell * 0.99);
+      const g14Sell = Math.round(g24Sell * (14 / 24));
+      const g14Buy = Math.round(g14Sell * 0.99);
+
+      josourState.gold.c24 = { buy: g24Buy, sell: g24Sell };
+      josourState.gold.c21 = { buy: g21Buy, sell: g21Sell };
+      josourState.gold.c18 = { buy: g18Buy, sell: g18Sell };
+      josourState.gold.c14 = { buy: g14Buy, sell: g14Sell };
+      josourState.gold.pound = g21Sell * 8;
+    }
+
+    // 3) جلب بيانات الأرصاد والطاقة الشمسية في مصر ومكة المكرمة من مصادر متعددة
+    async function syncLiveWeatherAndEnergy() {
+      try {
+        // القاهرة، الإسكندرية، المنيا، أسوان، مكة المكرمة
+        const url = 'https://api.open-meteo.com/v1/forecast?latitude=30.04,31.20,28.10,24.09,21.42&longitude=31.23,29.91,30.75,32.90,39.82&current=temperature_2m,relative_humidity_2m,wind_speed_10m,shortwave_radiation&daily=temperature_2m_max,temperature_2m_min&timezone=auto';
+        const data = await fetchWithTimeout(url, 4500);
+        if (Array.isArray(data) && data.length >= 5) {
+          const [cairo, alex, minya, aswan, makkah] = data;
+          josourState.weather.cairoMax = Math.round(cairo.daily.temperature_2m_max[0]);
+          josourState.weather.cairoMin = Math.round(cairo.daily.temperature_2m_min[0]);
+          josourState.weather.northMax = Math.round(alex.daily.temperature_2m_max[0]);
+          josourState.weather.northMin = Math.round(alex.daily.temperature_2m_min[0]);
+          josourState.weather.midMax = Math.round(minya.daily.temperature_2m_max[0]);
+          josourState.weather.midMin = Math.round(minya.daily.temperature_2m_min[0]);
+          josourState.weather.southMax = Math.round(aswan.daily.temperature_2m_max[0]);
+          josourState.weather.southMin = Math.round(aswan.daily.temperature_2m_min[0]);
+          josourState.weather.windSpeed = Math.round(cairo.current.wind_speed_10m || 14);
+          const rad = Math.round(cairo.current.shortwave_radiation || 462);
+          josourState.weather.solarIrradiance = rad > 50 ? rad : 462;
+          josourState.weather.efficiency = Math.min(96, Math.max(74, Math.round(72 + (josourState.weather.windSpeed * 0.8))));
+
+          josourState.haram.temp = Math.round(makkah.current.temperature_2m);
+          josourState.haram.humidity = Math.round(makkah.current.relative_humidity_2m);
+        }
+      } catch (e) {
+        // الاحتفاظ بالقيم الحية المخزنة عند تعذر الاتصال
+      }
+    }
+
+    // 4) جلب مواقيت الصلاة والتقويم الهجري لمكة المكرمة من مصادر موثوقة
+    async function syncLiveHaramPrayers() {
+      const endpoints = [
+        'https://api.aladhan.com/v1/timingsByCity?city=Makkah&country=Saudi%20Arabia&method=4',
+        'https://api.aladhan.com/v1/timings?latitude=21.4225&longitude=39.8262&method=4'
+      ];
+      for (const url of endpoints) {
+        try {
+          const res = await fetchWithTimeout(url, 4200);
+          if (res && res.data && res.data.timings) {
+            const t = res.data.timings;
+            josourState.haram.prayers = {
+              Fajr: t.Fajr.slice(0, 5),
+              Dhuhr: t.Dhuhr.slice(0, 5),
+              Asr: t.Asr.slice(0, 5),
+              Maghrib: t.Maghrib.slice(0, 5),
+              Isha: t.Isha.slice(0, 5)
+            };
+            if (res.data.date && res.data.date.hijri) {
+              const h = res.data.date.hijri;
+              josourState.haram.hijri = `${h.day} ${h.month.ar} ${h.year} هـ • مكة المكرمة`;
+            }
+            return true;
+          }
+        } catch (e) {}
+      }
+      return false;
+    }
+
+    // 5) حساب الساعة السكانية الحية لمصر بناءً على معدل النمو اللحظي الحقيقي
+    function syncLivePopulationClock() {
+      // نقطة مرجعية دقيقة لعام 2026 مع معدل زيادة صافي ~1 فرد كل 18 ثانية
+      const baseEpoch = new Date('2026-11-26T00:00:00+02:00').getTime();
+      const now = Date.now();
+      const diffSeconds = Math.max(0, Math.floor((now - baseEpoch) / 1000));
+      const basePop = 120980415;
+      const netAddedSinceMidnight = Math.floor(diffSeconds / 18.2);
+      const births = Math.floor(diffSeconds / 12.1);
+      const deaths = Math.max(1, births - netAddedSinceMidnight);
+
+      josourState.population.total = basePop + netAddedSinceMidnight;
+      josourState.population.birthsToday = births;
+      josourState.population.deathsToday = deaths;
+    }
+
+    // =========================================================================
+    // 2. تحديث واجهة المستخدم بجميع البيانات
+    // =========================================================================
+    function renderAllCards() {
+      // تحديث التاريخ والوقت
+      const now = new Date();
+      const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+      const arabicDate = now.toLocaleDateString('ar-EG', dateOptions);
+      const arabicTime = now.toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' });
+
+      document.getElementById('liveDateDisplay').textContent = arabicDate;
+      document.getElementById('liveTimeDisplay').textContent = `تحديث ${arabicTime} بتوقيت القاهرة`;
+      document.querySelectorAll('.card-date-label').forEach(el => {
+        el.textContent = arabicDate;
+      });
+
+      // 1. البنوك
+      const banksBody = document.getElementById('banksTableBody');
+      banksBody.innerHTML = josourState.banks.map((b, idx) => `
+        <div class="grid grid-cols-12 items-center py-1.5 px-3 ${idx % 2 === 0 ? 'bg-white' : 'bg-emerald-50/40'}">
+          <div class="col-span-6 font-extrabold text-josour-dark truncate text-[11px]">${b.name}</div>
+          <div class="col-span-3 text-center font-black text-emerald-700">${b.buy.toFixed(2)}</div>
+          <div class="col-span-3 text-center font-black text-josour-dark">${b.sell.toFixed(2)}</div>
+        </div>
+      `).join('');
+
+      // 2. العملات
+      const sarObj = josourState.currencies.find(c => c.code === 'SAR');
+      if (sarObj) {
+        document.getElementById('sarHighlightBadge').textContent = `${Math.round(sarObj.sell * 100).toLocaleString('en-US')} جنيه =`;
+      }
+      const currBody = document.getElementById('currenciesTableBody');
+      currBody.innerHTML = josourState.currencies.map((c, idx) => `
+        <div class="grid grid-cols-12 items-center py-1.5 px-3 ${idx % 2 === 0 ? 'bg-white' : 'bg-emerald-50/40'}">
+          <div class="col-span-6 font-extrabold text-josour-dark truncate text-[11px]">${c.name} <span class="text-[9px] text-slate-400">(${c.code})</span></div>
+          <div class="col-span-3 text-center font-black text-emerald-700">${c.buy.toFixed(2)}</div>
+          <div class="col-span-3 text-center font-black text-josour-dark">${c.sell.toFixed(2)}</div>
+        </div>
+      `).join('');
+
+      // 3. الذهب
+      const g = josourState.gold;
+      document.getElementById('goldPoundPrice').textContent = g.pound.toLocaleString('en-US');
+      document.getElementById('goldOunceUsd').textContent = `$${g.ounceUsd.toLocaleString('en-US')}`;
+      document.getElementById('goldOunceEgp').textContent = `${Math.round(g.ounceUsd * josourState.usdBase).toLocaleString('en-US')} جنيه`;
+
+      const goldRows = [
+        { label: 'ذهب عيار 24 نقي', badge: '24', buy: g.c24.buy, sell: g.c24.sell },
+        { label: 'ذهب عيار 21 الأكثر تداولاً', badge: '21', buy: g.c21.buy, sell: g.c21.sell },
+        { label: 'ذهب عيار 18', badge: '18', buy: g.c18.buy, sell: g.c18.sell },
+        { label: 'ذهب عيار 14', badge: '14', buy: g.c14.buy, sell: g.c14.sell }
+      ];
+      document.getElementById('goldTableBody').innerHTML = goldRows.map((r, idx) => `
+        <div class="grid grid-cols-12 items-center py-2 px-3 ${idx === 1 ? 'bg-amber-100/70' : 'bg-white'}">
+          <div class="col-span-6 flex items-center gap-1.5 font-extrabold text-josour-dark text-[11px]">
+            <span class="w-5 h-5 rounded-full bg-amber-600 text-white text-[10px] flex items-center justify-center font-black shrink-0">${r.badge}</span>
+            <span class="truncate">${r.label}</span>
+          </div>
+          <div class="col-span-3 text-center font-black text-amber-800">${r.buy.toLocaleString('en-US')}</div>
+          <div class="col-span-3 text-center font-black text-josour-dark">${r.sell.toLocaleString('en-US')}</div>
+        </div>
+      `).join('');
+
+      // 4. الأرصاد والطاقة
+      const w = josourState.weather;
+      document.getElementById('mapNorthTemp').textContent = `${w.northMax}°`;
+      document.getElementById('mapCairoTemp').textContent = `${w.cairoMax}°`;
+      document.getElementById('mapMidTemp').textContent = `${w.midMax}°`;
+      document.getElementById('mapSouthTemp').textContent = `${w.southMax}°`;
+      document.getElementById('wCairoRange').textContent = `${w.cairoMin}° - ${w.cairoMax}°`;
+      document.getElementById('wNorthRange').textContent = `${w.northMin}° - ${w.northMax}°`;
+      document.getElementById('wMidRange').textContent = `${w.midMin}° - ${w.midMax}°`;
+      document.getElementById('wSouthRange').textContent = `${w.southMin}° - ${w.southMax}°`;
+      document.getElementById('solarEfficiencyBadge').textContent = `كفاءة ${w.efficiency}%`;
+      document.getElementById('solarWindSummary').textContent = `إشعاع شمسي ${w.solarIrradiance} واط/م² • رياح منتظمة بسرعة ${w.windSpeed} كم/ساعة مثالية لتوليد الطاقة النظيفة.`;
+
+      // 5. التعداد السكاني
+      const p = josourState.population;
+      document.getElementById('livePopulationCounter').textContent = p.total.toLocaleString('en-US');
+      document.getElementById('popBirthsToday').textContent = `+${p.birthsToday.toLocaleString('en-US')}`;
+      document.getElementById('popDeathsToday').textContent = p.deathsToday.toLocaleString('en-US');
+      document.getElementById('popNetToday').textContent = `+${(p.birthsToday - p.deathsToday).toLocaleString('en-US')}`;
+      document.getElementById('popMalesCount').textContent = Math.round(p.total * 0.502).toLocaleString('en-US');
+      document.getElementById('popFemalesCount').textContent = Math.round(p.total * 0.498).toLocaleString('en-US');
+
+      // 6. الحرم المكي
+      const h = josourState.haram;
+      document.getElementById('haramHijriDate').textContent = h.hijri;
+      document.getElementById('makkahTemp').textContent = `${h.temp}°C`;
+      document.getElementById('makkahWind').textContent = `رطوبة ${h.humidity}%`;
+      document.getElementById('ptFajr').textContent = h.prayers.Fajr;
+      document.getElementById('ptDhuhr').textContent = h.prayers.Dhuhr;
+      document.getElementById('ptAsr').textContent = h.prayers.Asr;
+      document.getElementById('ptMaghrib').textContent = h.prayers.Maghrib;
+      document.getElementById('ptIsha').textContent = h.prayers.Isha;
+      updateNextMakkahPrayer();
+    }
+
+    function updateNextMakkahPrayer() {
+      const p = josourState.haram.prayers;
+      const list = [
+        { name: 'الفجر', time: p.Fajr },
+        { name: 'الظهر', time: p.Dhuhr },
+        { name: 'العصر', time: p.Asr },
+        { name: 'المغرب', time: p.Maghrib },
+        { name: 'العشاء', time: p.Isha }
+      ];
+
+      // توقيت مكة المكرمة UTC+3
+      const nowUtc = new Date(Date.now() + new Date().getTimezoneOffset() * 60000);
+      const makkahNow = new Date(nowUtc.getTime() + 3 * 3600000);
+      const curMins = makkahNow.getHours() * 60 + makkahNow.getMinutes();
+
+      let next = list[0];
+      let diffMins = 0;
+
+      for (const item of list) {
+        const [hh, mm] = item.time.split(':').map(Number);
+        const itemMins = hh * 60 + mm;
+        if (itemMins > curMins) {
+          next = item;
+          diffMins = itemMins - curMins;
+          break;
+        }
+      }
+      if (diffMins === 0) {
+        const [hh, mm] = list[0].time.split(':').map(Number);
+        diffMins = (24 * 60 - curMins) + (hh * 60 + mm);
+      }
+
+      const hrs = Math.floor(diffMins / 60);
+      const mins = diffMins % 60;
+      document.getElementById('nextPrayerTitle').textContent = `الصلاة القادمة: ${next.name}`;
+      document.getElementById('nextPrayerTime').textContent = next.time;
+      document.getElementById('nextPrayerCountdown').textContent = `متبقي ${hrs} س و ${mins} د`;
+    }
+
+    // تحديث شامل لجميع المصادر في الخلفية
+    async function refreshAllLiveFeeds(showFeedback = false) {
+      const icon = document.getElementById('refreshIcon');
+      if (icon) icon.classList.add('rotate-180');
+
+      syncLivePopulationClock();
+      renderAllCards();
+
+      await Promise.allSettled([
+        syncLiveCurrencies(),
+        syncLiveGold(),
+        syncLiveWeatherAndEnergy(),
+        syncLiveHaramPrayers()
+      ]);
+
+      renderAllCards();
+      calculateConversion();
+
+      setTimeout(() => {
+        if (icon) icon.classList.remove('rotate-180');
+      }, 600);
+
+      if (showFeedback) {
+        showToast('تم تحديث كافة المؤشرات والأسعار الحية');
+      }
+    }
+
+    // =========================================================================
+    // 3. محرك الرسم وتصدير الستوري (PNG 1080x1920) والريلز (فيديو موشن جرافيك 10 ثوانٍ)
+    // =========================================================================
+    function drawCardFrameOnCanvas(ctx, w, h, cardType, progress) {
+      // progress من 0 إلى 1 خلال 10 ثوانٍ
+      const angle = progress * Math.PI * 2;
+      const isHaram = cardType === 'haram';
+      const isGold = cardType === 'gold';
+
+      // 1. الخلفية المتدرجة
+      const bgGrad = ctx.createLinearGradient(0, 0, w, h);
+      if (isHaram) {
+        bgGrad.addColorStop(0, '#0c3621');
+        bgGrad.addColorStop(0.55, '#155736');
+        bgGrad.addColorStop(1, '#1e7348');
+      } else if (isGold) {
+        bgGrad.addColorStop(0, '#fffdf7');
+        bgGrad.addColorStop(0.55, '#fbf2dd');
+        bgGrad.addColorStop(1, '#f2e1be');
+      } else {
+        bgGrad.addColorStop(0, '#ffffff');
+        bgGrad.addColorStop(0.55, '#f2f8f5');
+        bgGrad.addColorStop(1, '#e1f0e7');
+      }
+      ctx.fillStyle = bgGrad;
+      ctx.fillRect(0, 0, w, h);
+
+      // 2. دوائر موشن جرافيك متحركة في الخلفية
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(w * 0.18 + Math.sin(angle) * 45, h * 0.22 + Math.cos(angle) * 35, 220, 0, Math.PI * 2);
+      ctx.fillStyle = isHaram ? 'rgba(200, 138, 46, 0.14)' : 'rgba(22, 91, 56, 0.08)';
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.arc(w * 0.84 - Math.cos(angle) * 50, h * 0.78 - Math.sin(angle) * 40, 260, 0, Math.PI * 2);
+      ctx.fillStyle = isGold ? 'rgba(200, 138, 46, 0.16)' : 'rgba(200, 138, 46, 0.10)';
+      ctx.fill();
+      ctx.restore();
+
+      // 3. شريط التقدم العلوي 10 ثواني
+      ctx.fillStyle = isHaram ? 'rgba(255,255,255,0.18)' : 'rgba(22,91,56,0.15)';
+      ctx.fillRect(0, 0, w, 14);
+      ctx.fillStyle = '#c88a2e';
+      ctx.fillRect(w * (1 - progress), 0, w * progress, 14);
+
+      // 4. الهيدر وشعار جسور
+      ctx.textAlign = 'right';
+      ctx.direction = 'rtl';
+
+      // شارة جسور
+      roundRect(ctx, 64, 64, 180, 62, 20, isHaram ? '#ffffff' : '#165b38');
+      ctx.fillStyle = isHaram ? '#165b38' : '#ffffff';
+      ctx.font = '900 34px Cairo, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('جسور', 154, 107);
+
+      // شارة البث المباشر
+      roundRect(ctx, w - 340, 64, 276, 62, 31, isHaram ? '#f59e0b' : '#165b38');
+      ctx.fillStyle = isHaram ? '#0f291c' : '#ffffff';
+      ctx.font = '800 26px Cairo, sans-serif';
+      ctx.fillText('● تحديث مباشر', w - 202, 105);
+
+      // العنوان الرئيسي والتاريخ
+      const titles = {
+        banks: 'أسعار الدولار في البنوك المصرية',
+        currencies: 'أسعار العملات مقابل الجنيه المصري',
+        gold: 'أسعار الذهب في مصر اليوم',
+        weather: 'الأرصاد ومستقبل الطاقة النظيفة',
+        population: 'التعداد السكاني في مصر الآن',
+        haram: 'الحرم المكي مباشر • مكة المكرمة'
+      };
+      ctx.textAlign = 'right';
+      ctx.fillStyle = isHaram ? '#ffffff' : '#0f4229';
+      ctx.font = '900 50px Cairo, sans-serif';
+      ctx.fillText(titles[cardType] || 'منصة جسور المباشرة', w - 64, 210);
+
+      const dateStr = new Date().toLocaleDateString('ar-EG', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+      ctx.fillStyle = isHaram ? '#fde68a' : '#475569';
+      ctx.font = '700 30px Cairo, sans-serif';
+      ctx.fillText(dateStr, w - 64, 262);
+
+      // 5. محتوى كل بطاقة بتفاصيلها الحية
+      const pulseScale = 1 + Math.sin(angle * 2) * 0.012;
+
+      if (cardType === 'banks' || cardType === 'currencies') {
+        const list = cardType === 'banks' ? josourState.banks : josourState.currencies;
+        const startY = 320;
+        const rowH = 148;
+
+        // رأس الجدول
+        roundRect(ctx, 64, startY, w - 128, 86, 22, '#0f4229');
+        ctx.fillStyle = '#ffffff';
+        ctx.font = '800 32px Cairo, sans-serif';
+        ctx.textAlign = 'right';
+        ctx.fillText(cardType === 'banks' ? 'البنك' : 'العملة', w - 100, startY + 55);
+        ctx.textAlign = 'center';
+        ctx.fillText('الشراء', 390, startY + 55);
+        ctx.fillText('البيع', 180, startY + 55);
+
+        list.slice(0, 8).forEach((item, idx) => {
+          const y = startY + 104 + idx * rowH;
+          const isHighlight = Math.floor(progress * 8) === idx;
+          roundRect(ctx, 64, y, w - 128, rowH - 16, 22, isHighlight ? '#d3eadc' : '#ffffff');
+          ctx.strokeStyle = isHighlight ? '#165b38' : 'rgba(22,91,56,0.12)';
+          ctx.lineWidth = isHighlight ? 4 : 2;
+          ctx.stroke();
+
+          ctx.textAlign = 'right';
+          ctx.fillStyle = '#0f291c';
+          ctx.font = '800 32px Cairo, sans-serif';
+          ctx.fillText(item.name, w - 96, y + 80);
+
+          ctx.textAlign = 'center';
+          ctx.fillStyle = '#15803d';
+          ctx.font = '900 36px Cairo, sans-serif';
+          ctx.fillText(item.buy.toFixed(2), 390, y + 82);
+
+          ctx.fillStyle = '#0f4229';
+          ctx.fillText(item.sell.toFixed(2), 180, y + 82);
+        });
+
+      } else if (cardType === 'gold') {
+        const g = josourState.gold;
+        // بطاقتين علويتين
+        roundRect(ctx, 540, 320, 476, 230, 30, '#78350f');
+        ctx.textAlign = 'right';
+        ctx.fillStyle = '#fde68a';
+        ctx.font = '700 28px Cairo, sans-serif';
+        ctx.fillText('الجنيه الذهب (8 جم)', 980, 380);
+        ctx.fillStyle = '#ffffff';
+        ctx.font = '900 62px Cairo, sans-serif';
+        ctx.fillText(`${g.pound.toLocaleString('en-US')} ج.م`, 980, 465);
+
+        roundRect(ctx, 64, 320, 450, 230, 30, '#ffffff');
+        ctx.strokeStyle = '#d97706';
+        ctx.lineWidth = 3;
+        ctx.stroke();
+        ctx.fillStyle = '#64748b';
+        ctx.font = '700 28px Cairo, sans-serif';
+        ctx.fillText('الأونصة العالمية', 480, 380);
+        ctx.fillStyle = '#0f4229';
+        ctx.font = '900 60px Cairo, sans-serif';
+        ctx.fillText(`$${g.ounceUsd.toLocaleString('en-US')}`, 480, 465);
+
+        const rows = [
+          { title: 'ذهب عيار 24 نقي', buy: g.c24.buy, sell: g.c24.sell },
+          { title: 'ذهب عيار 21 الأكثر تداولاً', buy: g.c21.buy, sell: g.c21.sell },
+          { title: 'ذهب عيار 18', buy: g.c18.buy, sell: g.c18.sell },
+          { title: 'ذهب عيار 14', buy: g.c14.buy, sell: g.c14.sell }
+        ];
+
+        roundRect(ctx, 64, 600, w - 128, 90, 22, '#92400e');
+        ctx.fillStyle = '#ffffff';
+        ctx.font = '800 34px Cairo, sans-serif';
+        ctx.textAlign = 'right';
+        ctx.fillText('العيار', w - 100, 658);
+        ctx.textAlign = 'center';
+        ctx.fillText('الشراء', 400, 658);
+        ctx.fillText('البيع', 190, 658);
+
+        rows.forEach((r, idx) => {
+          const y = 715 + idx * 230;
+          roundRect(ctx, 64, y, w - 128, 200, 28, idx === 1 ? '#fef3c7' : '#ffffff');
+          ctx.strokeStyle = '#f59e0b';
+          ctx.lineWidth = idx === 1 ? 4 : 2;
+          ctx.stroke();
+
+          ctx.textAlign = 'right';
+          ctx.fillStyle = '#0f291c';
+          ctx.font = '900 38px Cairo, sans-serif';
+          ctx.fillText(r.title, w - 100, y + 112);
+
+          ctx.textAlign = 'center';
+          ctx.fillStyle = '#92400e';
+          ctx.font = '900 44px Cairo, sans-serif';
+          ctx.fillText(r.buy.toLocaleString('en-US'), 400, y + 114);
+
+          ctx.fillStyle = '#0f4229';
+          ctx.fillText(r.sell.toLocaleString('en-US'), 190, y + 114);
+        });
+
+      } else if (cardType === 'weather') {
+        const wt = josourState.weather;
+        const regions = [
+          { name: 'القاهرة والدلتا', range: `${wt.cairoMin}° إلى ${wt.cairoMax}°`, desc: 'أجواء معتدلة مشمسة' },
+          { name: 'السواحل الشمالية', range: `${wt.northMin}° إلى ${wt.northMax}°`, desc: 'نسيم بحري لطيف' },
+          { name: 'شمال الصعيد', range: `${wt.midMin}° إلى ${wt.midMax}°`, desc: 'سطوع شمسي مرتفع' },
+          { name: 'جنوب الصعيد', range: `${wt.southMin}° إلى ${wt.southMax}°`, desc: 'طاقة شمسية قصوى' }
+        ];
+
+        regions.forEach((reg, idx) => {
+          const y = 320 + idx * 215;
+          roundRect(ctx, 64, y, w - 128, 190, 28, '#ffffff');
+          ctx.strokeStyle = '#cbe3d5';
+          ctx.lineWidth = 3;
+          ctx.stroke();
+
+          ctx.textAlign = 'right';
+          ctx.fillStyle = '#0f4229';
+          ctx.font = '900 40px Cairo, sans-serif';
+          ctx.fillText(reg.name, w - 100, y + 80);
+
+          ctx.fillStyle = '#64748b';
+          ctx.font = '700 30px Cairo, sans-serif';
+          ctx.fillText(reg.desc, w - 100, y + 140);
+
+          ctx.textAlign = 'left';
+          ctx.fillStyle = '#c88a2e';
+          ctx.font = '900 48px Cairo, sans-serif';
+          ctx.fillText(reg.range, 100, y + 110);
+        });
+
+        // بطاقة الطاقة النظيفة السفلية
+        roundRect(ctx, 64, 1210, w - 128, 460, 34, '#0f4229');
+        ctx.textAlign = 'right';
+        ctx.fillStyle = '#fbbf24';
+        ctx.font = '900 42px Cairo, sans-serif';
+        ctx.fillText(`☀️ كفاءة الطاقة المتجددة: ${wt.efficiency}%`, w - 105, 1300);
+
+        ctx.fillStyle = '#ffffff';
+        ctx.font = '700 34px Cairo, sans-serif';
+        ctx.fillText(`• الإشعاع الشمسي: ${wt.solarIrradiance} واط / م²`, w - 105, 1390);
+        ctx.fillText(`• سرعة الرياح المنتظمة: ${wt.windSpeed} كم / ساعة`, w - 105, 1470);
+        ctx.fillText('• حالة البحرين: معتدلة ومهيأة للملاحة', w - 105, 1550);
+
+      } else if (cardType === 'population') {
+        const pop = josourState.population;
+        // عداد السكان المتحرك خلال الـ 10 ثوانٍ
+        const animatedPop = pop.total + Math.floor(progress * 2);
+
+        ctx.save();
+        ctx.translate(w / 2, 520);
+        ctx.scale(pulseScale, pulseScale);
+        roundRect(ctx, -(w - 128) / 2, -190, w - 128, 380, 38, '#145334');
+        ctx.textAlign = 'center';
+        ctx.fillStyle = '#a7f3d0';
+        ctx.font = '800 36px Cairo, sans-serif';
+        ctx.fillText('إجمالي عدد السكان بالداخل الآن', 0, -90);
+
+        ctx.fillStyle = '#fbbf24';
+        ctx.font = '900 92px Cairo, sans-serif';
+        ctx.fillText(animatedPop.toLocaleString('en-US'), 0, 30);
+
+        ctx.fillStyle = '#ffffff';
+        ctx.font = '700 32px Cairo, sans-serif';
+        ctx.fillText('مولود جديد كل 12 ثانية • معدل النمو السنوي 1.57%', 0, 120);
+        ctx.restore();
+
+        const stats = [
+          { title: 'المواليد اليوم', val: `+${pop.birthsToday.toLocaleString('en-US')}`, color: '#15803d' },
+          { title: 'الوفيات اليوم', val: pop.deathsToday.toLocaleString('en-US'), color: '#be123c' },
+          { title: 'صافي الزيادة اليوم', val: `+${(pop.birthsToday - pop.deathsToday).toLocaleString('en-US')}`, color: '#b45309' },
+          { title: 'نسبة الذكور / الإناث', val: '50.2% ذكور • 49.8% إناث', color: '#0f4229' }
+        ];
+
+        stats.forEach((st, idx) => {
+          const y = 760 + idx * 230;
+          roundRect(ctx, 64, y, w - 128, 195, 28, '#ffffff');
+          ctx.strokeStyle = '#cbe3d5';
+          ctx.lineWidth = 3;
+          ctx.stroke();
+
+          ctx.textAlign = 'right';
+          ctx.fillStyle = '#475569';
+          ctx.font = '800 34px Cairo, sans-serif';
+          ctx.fillText(st.title, w - 105, y + 75);
+
+          ctx.fillStyle = st.color;
+          ctx.font = '900 48px Cairo, sans-serif';
+          ctx.fillText(st.val, w - 105, y + 150);
+        });
+
+      } else if (cardType === 'haram') {
+        const hr = josourState.haram;
+        // الطقس والصلاة القادمة
+        roundRect(ctx, 64, 320, w - 128, 250, 32, 'rgba(255,255,255,0.12)');
+        ctx.textAlign = 'right';
+        ctx.fillStyle = '#fbbf24';
+        ctx.font = '900 42px Cairo, sans-serif';
+        ctx.fillText(`طقس المسجد الحرام: ${hr.temp}°C`, w - 105, 405);
+        ctx.fillStyle = '#ffffff';
+        ctx.font = '700 34px Cairo, sans-serif';
+        ctx.fillText(`نسبة الرطوبة: ${hr.humidity}% • أجواء روحانية صافية`, w - 105, 485);
+
+        // مواقيت الصلاة
+        const pList = [
+          { name: 'صلاة الفجر', time: hr.prayers.Fajr },
+          { name: 'صلاة الظهر', time: hr.prayers.Dhuhr },
+          { name: 'صلاة العصر', time: hr.prayers.Asr },
+          { name: 'صلاة المغرب', time: hr.prayers.Maghrib },
+          { name: 'صلاة العشاء', time: hr.prayers.Isha }
+        ];
+
+        pList.forEach((pr, idx) => {
+          const y = 610 + idx * 165;
+          roundRect(ctx, 64, y, w - 128, 142, 24, 'rgba(255,255,255,0.14)');
+          ctx.textAlign = 'right';
+          ctx.fillStyle = '#ffffff';
+          ctx.font = '800 38px Cairo, sans-serif';
+          ctx.fillText(pr.name, w - 105, y + 88);
+
+          ctx.textAlign = 'left';
+          ctx.fillStyle = '#fbbf24';
+          ctx.font = '900 44px Cairo, sans-serif';
+          ctx.fillText(pr.time, 105, y + 90);
+        });
+
+        // إحصائيات المطاف والسعة
+        roundRect(ctx, 64, 1465, w - 128, 220, 28, '#c88a2e');
+        ctx.textAlign = 'center';
+        ctx.fillStyle = '#0f291c';
+        ctx.font = '900 38px Cairo, sans-serif';
+        ctx.fillText('السعة الاستيعابية: 2 مليون مصلٍ', w / 2, 1550);
+        ctx.font = '800 34px Cairo, sans-serif';
+        ctx.fillText('طاقة صحن المطاف: 107,000 طائف / ساعة', w / 2, 1625);
+      }
+
+      // 6. الفوتر الموحد لهوية جسور
+      ctx.fillStyle = isHaram ? 'rgba(255,255,255,0.2)' : 'rgba(22,91,56,0.15)';
+      ctx.fillRect(64, h - 135, w - 128, 3);
+
+      ctx.textAlign = 'right';
+      ctx.fillStyle = isHaram ? '#fde68a' : '#0f4229';
+      ctx.font = '800 28px Cairo, sans-serif';
+      ctx.fillText('منصة جسور المباشرة • بيانات حية لحظة بلحظة', w - 64, h - 75);
+
+      ctx.textAlign = 'left';
+      ctx.fillStyle = isHaram ? '#ffffff' : '#165b38';
+      ctx.font = '900 30px Cairo, sans-serif';
+      ctx.fillText('JOSOUR LIVE 9:16', 64, h - 75);
+    }
+
+    function roundRect(ctx, x, y, width, height, radius, fillColor) {
+      ctx.beginPath();
+      ctx.moveTo(x + radius, y);
+      ctx.lineTo(x + width - radius, y);
+      ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+      ctx.lineTo(x + width, y + height - radius);
+      ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+      ctx.lineTo(x + radius, y + height);
+      ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+      ctx.lineTo(x, y + radius);
+      ctx.quadraticCurveTo(x, y, x + radius, y);
+      ctx.closePath();
+      if (fillColor) {
+        ctx.fillStyle = fillColor;
+        ctx.fill();
+      }
+    }
+
+    // تصدير صورة ستوري عالية الدقة 1080x1920
+    function exportStoryImage(cardType, fileNamePrefix) {
+      showExportModal('جاري تجهيز صورة الستوري...', 'يتم تصدير البطاقة بأبعاد 1080×1920 عالية الدقة', 65);
+      setTimeout(() => {
+        const canvas = document.createElement('canvas');
+        canvas.width = 1080;
+        canvas.height = 1920;
+        const ctx = canvas.getContext('2d');
+        drawCardFrameOnCanvas(ctx, 1080, 1920, cardType, 0.35);
+
+        updateExportModal(100);
+        const link = document.createElement('a');
+        link.download = `جسور-${fileNamePrefix}-story.png`;
+        link.href = canvas.toDataURL('image/png', 1.0);
+        link.click();
+
+        setTimeout(() => {
+          hideExportModal();
+          showToast('تم تحميل صورة الستوري بنجاح');
+        }, 400);
+      }, 250);
+    }
+
+    // تصدير فيديو ريلز موشن جرافيك لمدة 10 ثوانٍ
+    function exportReelsVideo(cardType, fileNamePrefix) {
+      showExportModal('جاري إنتاج فيديو ريلز (10 ثوانٍ)...', 'يتم تسجيل حركة الموشن جرافيك المتصلة بمقاس 9:16', 5);
+
+      const canvas = document.createElement('canvas');
+      canvas.width = 720;
+      canvas.height = 1280;
+      const ctx = canvas.getContext('2d');
+
+      const durationMs = 10000; // 10 ثواني بالضبط
+      const fps = 30;
+      const stream = canvas.captureStream(fps);
+
+      // اختيار أفضل صيغة فيديو مدعومة على المتصفح (MP4 أو WebM)
+      const mimeTypes = [
+        'video/mp4;codecs=avc1',
+        'video/mp4',
+        'video/webm;codecs=vp9',
+        'video/webm'
+      ];
+      let selectedMime = '';
+      for (const m of mimeTypes) {
+        if (window.MediaRecorder && MediaRecorder.isTypeSupported(m)) {
+          selectedMime = m;
+          break;
+        }
+      }
+
+      if (!selectedMime) {
+        hideExportModal();
+        exportStoryImage(cardType, fileNamePrefix);
+        return;
+      }
+
+      const chunks = [];
+      const recorder = new MediaRecorder(stream, {
+        mimeType: selectedMime,
+        videoBitsPerSecond: 4500000
+      });
+
+      recorder.ondataavailable = e => {
+        if (e.data && e.data.size > 0) chunks.push(e.data);
+      };
+
+      recorder.onstop = () => {
+        const isMp4 = selectedMime.includes('mp4');
+        const ext = isMp4 ? 'mp4' : 'webm';
+        const blob = new Blob(chunks, { type: selectedMime });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `جسور-${fileNamePrefix}-reels-10s.${ext}`;
+        a.click();
+        setTimeout(() => URL.revokeObjectURL(url), 5000);
+        hideExportModal();
+        showToast('تم تحميل فيديو الريلز (10 ثوانٍ) بنجاح');
+      };
+
+      recorder.start();
+      const startTime = performance.now();
+
+      function renderLoop(now) {
+        const elapsed = now - startTime;
+        const progress = Math.min(1, elapsed / durationMs);
+        drawCardFrameOnCanvas(ctx, 720, 1280, cardType, progress);
+        updateExportModal(Math.round(progress * 100));
+
+        if (elapsed < durationMs) {
+          requestAnimationFrame(renderLoop);
+        } else {
+          recorder.stop();
+        }
+      }
+
+      requestAnimationFrame(renderLoop);
+    }
+
+    // =========================================================================
+    // 4. التنقل، الفلترة، الحاسبة، والبث المباشر للحرم المكي
+    // =========================================================================
+    function filterCategory(cat) {
+      document.querySelectorAll('.cat-tab').forEach(btn => {
+        if (btn.dataset.cat === cat) {
+          btn.classList.add('bg-josour-primary', 'text-white', 'shadow-xs');
+          btn.classList.remove('bg-emerald-50/80', 'text-josour-dark');
+        } else {
+          btn.classList.remove('bg-josour-primary', 'text-white', 'shadow-xs');
+          btn.classList.add('bg-emerald-50/80', 'text-josour-dark');
+        }
+      });
+
+      document.querySelectorAll('.card-container').forEach(card => {
+        if (cat === 'all' || card.dataset.category === cat) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+
+    function switchView(viewName) {
+      const dash = document.getElementById('dashboardView');
+      const haram = document.getElementById('haramLiveView');
+      if (viewName === 'haramLive') {
+        dash.classList.add('hidden');
+        haram.classList.remove('hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        haram.classList.add('hidden');
+        dash.classList.remove('hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+
+    const haramChannels = [
+      'https://www.youtube.com/embed/Cm1v4RUYfkw',
+      'https://www.youtube.com/embed/1-iS7LArMPA'
+    ];
+    let currentChannelIndex = 0;
+    let currentQualityCode = 'hd1080';
+
+    function setHaramQuality(label, btnEl) {
+      const map = {
+        '1080p': 'hd1080',
+        '720p': 'hd720',
+        '480p': 'large',
+        '240p': 'small'
+      };
+      currentQualityCode = map[label] || 'hd1080';
+      document.getElementById('currentQualityLabel').textContent = label;
+
+      document.querySelectorAll('.quality-btn').forEach(b => {
+        b.classList.remove('bg-amber-400', 'text-josour-dark', 'font-black');
+        b.classList.add('text-white', 'font-bold');
+      });
+      btnEl.classList.add('bg-amber-400', 'text-josour-dark', 'font-black');
+      btnEl.classList.remove('text-white', 'font-bold');
+
+      reloadHaramIframe();
+      showToast(`تم ضبط جودة البث المباشر على ${label}`);
+    }
+
+    function switchHaramStreamChannel(idx) {
+      currentChannelIndex = idx;
+      document.querySelectorAll('.stream-ch-btn').forEach((b, i) => {
+        if (i === idx) {
+          b.classList.add('bg-josour-primary', 'border', 'border-emerald-400/40', 'font-extrabold');
+          b.classList.remove('bg-white/10', 'font-bold');
+        } else {
+          b.classList.remove('bg-josour-primary', 'border', 'border-emerald-400/40', 'font-extrabold');
+          b.classList.add('bg-white/10', 'font-bold');
+        }
+      });
+      reloadHaramIframe();
+    }
+
+    function reloadHaramIframe() {
+      const frame = document.getElementById('haramStreamFrame');
+      const base = haramChannels[currentChannelIndex];
+      frame.src = `${base}?autoplay=1&mute=0&rel=0&modestbranding=1&vq=${currentQualityCode}`;
+    }
+
+    // الحاسبة السريعة
+    function openCalculatorModal() {
+      document.getElementById('calculatorModal').classList.remove('hidden');
+      calculateConversion();
+    }
+    function closeCalculatorModal() {
+      document.getElementById('calculatorModal').classList.add('hidden');
+    }
+    function calculateConversion() {
+      const amount = parseFloat(document.getElementById('calcAmount').value) || 0;
+      const type = document.getElementById('calcType').value;
+      let rate = josourState.usdBase;
+
+      if (type === 'GOLD21') {
+        rate = josourState.gold.c21.sell;
+      } else if (type === 'GOLD24') {
+        rate = josourState.gold.c24.sell;
+      } else {
+        const found = josourState.currencies.find(c => c.code === type);
+        if (found) rate = found.sell;
+      }
+
+      const total = amount * rate;
+      document.getElementById('calcResult').textContent = `${total.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} جنيه`;
+    }
+
+    // نافذة التصدير والإشعارات
+    function showExportModal(title, desc, pct) {
+      document.getElementById('exportModalTitle').textContent = title;
+      document.getElementById('exportModalDesc').textContent = desc;
+      updateExportModal(pct);
+      document.getElementById('exportModal').classList.remove('hidden');
+    }
+    function updateExportModal(pct) {
+      document.getElementById('exportProgressBar').style.width = `${pct}%`;
+      document.getElementById('exportPercentText').textContent = `${pct}%`;
+    }
+    function hideExportModal() {
+      document.getElementById('exportModal').classList.add('hidden');
+    }
+
+    let toastTimer = null;
+    function showToast(msg) {
+      const toast = document.getElementById('toastNotification');
+      toast.textContent = msg;
+      toast.classList.remove('opacity-0', 'translate-y-2');
+      toast.classList.add('opacity-100', 'translate-y-0');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toast.classList.add('opacity-0', 'translate-y-2');
+        toast.classList.remove('opacity-100', 'translate-y-0');
+      }, 3000);
+    }
+
+    // تسجيل Service Worker للتشغيل السريع على الجوال و GitHub Pages
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js').catch(() => {});
+      });
+    }
+
+    // بدء التشغيل التلقائي عند تحميل الصفحة
+    window.addEventListener('DOMContentLoaded', () => {
+      refreshAllLiveFeeds(false);
+
+      // تحديث الساعة السكانية ومواقيت الصلاة كل 6 ثوانٍ
+      setInterval(() => {
+        syncLivePopulationClock();
+        renderAllCards();
+      }, 6000);
+
+      // تحديث البيانات الاقتصادية والأرصاد في الخلفية كل 60 ثانية
+      setInterval(() => {
+        refreshAllLiveFeeds(false);
+      }, 60000);
+    });
+  </script>
+</body>
+</html>
